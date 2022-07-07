@@ -1,0 +1,84 @@
+<h3>JS Injection</h3>
+<b>About JS Injection</b>
+
+<p>DOM-based JavaScript-injection vulnerabilities arise when a script executes attacker-controllable data as JavaScript. An attacker may be able to use the vulnerability to construct a URL that, if visited by another user, will cause arbitrary JavaScript supplied by the attacker to execute in the context of the user's browser session.</p>
+
+<b>Resources:</b>
+<div>
+  <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/02-Testing_for_JavaScript_Execution" target="_blank">OWASP Testing for JavaScript Execution</a></li>
+    <li><a href="https://portswigger.net/web-security/dom-based/javascript-injection" target="_blank">PortSwigger DOM
+        Based JavaScript Injection</a></li>
+        <li><a href="https://cwe.mitre.org/data/definitions/94.html" target="_blank">CWE-94: Improper Control of Generation of Code ('Code Injection')
+        </a></li>
+        <li><a href="https://cwe.mitre.org/data/definitions/74.html" target="_blank">CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
+        </a></li>
+  </ul>
+</div>
+
+
+
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeIdString" class="nav-tabs">
+  <li [ngbNavItem]="'tab1'">
+    <a ngbNavLink>Sinks</a>
+    <ng-template ngbNavContent>
+      <pre>
+vulnerability js-injection: eval(*)                                            [~sanitized]
+vulnerability js-injection: &lt;stdlib::FunctionConstructor>(*)                   [~sanitized]
+vulnerability js-injection: new &lt;stdlib::FunctionConstructor>(*)               [~sanitized]
+vulnerability js-injection: &lt;dom::WindowOrWorkerGlobalScope>.setTimeout(*)     [~sanitized]
+vulnerability js-injection: setTimeout(*)                                      [~sanitized]
+vulnerability js-injection: &lt;dom::WindowOrWorkerGlobalScope>.setInterval(*)    [~sanitized]
+vulnerability js-injection: setInterval(*)                                     [~sanitized]
+vulnerability js-injection: &lt;dom::WindowOrWorkerGlobalScope>.setImmediate(*)   [~sanitized]
+vulnerability js-injection: setImmediate(*)                                    [~sanitized]
+vulnerability js-injection: &lt;dom::WindowOrWorkerGlobalScope>.msSetImmediate(*) [~sanitized]
+vulnerability js-injection: &lt;dom::Document>.execCommand(*)                     [~sanitized]
+vulnerability js-injection: &lt;dom::WindowOrWorkerGlobalScope>.execScript(*)     [~sanitized] // only defined in IE
+vulnerability js-injection: &lt;dom::Range>.createContextualFragment(*)           [~sanitized]
+vulnerability js-injection: &lt;dom::crypto>.generateCRMFRequest(*)               [~sanitized]
+      </pre>
+    </ng-template>
+  </li>
+
+  <li [ngbNavItem]="'tab2'">
+    <a ngbNavLink>URL Sources</a>
+    <ng-template ngbNavContent>
+      <div class="sink">
+        <button (click)="loadHash()">Click here to load the URL hash into a JS eval sink.</button>
+      </div>
+    </ng-template>
+  </li>
+
+  <li [ngbNavItem]="'tab3'">
+    <a ngbNavLink>Window/Document Sources</a>
+    <ng-template ngbNavContent>
+      <div class="sink">
+        <h5>Text Input:</h5>
+        <form (submit)="loadInput(dangerousCookieInput.value)">
+          <input type="text" #dangerousCookieInput>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </ng-template>
+  </li>
+
+  <li [ngbNavItem]="'tab4'">
+      <a ngbNavLink>Communication Sources</a>
+      <ng-template ngbNavContent>
+      <div class="sink">
+        <button (click)="checkForCookie()">Click here to load cookie named 'username' into a JS eval sink.</button>
+      </div>
+    </ng-template>
+  </li>
+
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
+
+
+
+
+

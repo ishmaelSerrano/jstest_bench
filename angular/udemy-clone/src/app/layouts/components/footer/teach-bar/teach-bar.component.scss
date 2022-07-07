@@ -1,0 +1,19 @@
+h4 {
+  font-size: 1.2rem;
+  padding-bottom: 0.4rem;
+  color: #3b3c37;
+}
+
+p {
+  color: #3b3c37;
+}
+
+@media (max-width: 1300px) {
+  .left-content {
+    text-align: center;
+  }
+
+  .right-content {
+    margin-top: 1.5rem;
+  }
+}

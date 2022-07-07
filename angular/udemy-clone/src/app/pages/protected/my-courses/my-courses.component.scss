@@ -1,0 +1,40 @@
+.courses-list{
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+
+}
+h4 {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  color: #3c3b37;
+}
+a {
+  font-size: 1.6rem;
+  color: #0f7c90;
+
+  &:hover {
+    color: #004450;
+  }
+}
+
+.suggested-courses {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  justify-items: start;
+  ::ng-deep .course-container{
+    display: flex;
+    width: 100%;
+  }
+  ::ng-deep .img-container{
+    height: 25vh;
+    > img {
+      height: 100%;
+    }
+  }
+  ::ng-deep .course-content{
+    margin-left: 1rem;
+  }
+}

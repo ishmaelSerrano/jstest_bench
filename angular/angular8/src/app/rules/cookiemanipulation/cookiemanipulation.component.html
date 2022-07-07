@@ -1,0 +1,72 @@
+<div class="main__container">
+  <h3>Cookie Manipulation</h3>
+  <b>About Cookie Manipulation</b>
+
+  <p>Some DOM-based vulnerabilities allow attackers to manipulate data that they do not typically control. This transforms normally-safe data types, such as cookies, into potential sources. DOM-based cookie-manipulation vulnerabilities arise when a script writes attacker-controllable data into the value of a cookie.</p>
+
+  <p>An attacker may be able to use this vulnerability to construct a URL that, if visited by another user, will set an arbitrary value in the user's cookie. Many sinks are largely harmless on their own, but DOM-based cookie-manipulation attacks demonstrate how low-severity vulnerabilities can sometimes be used as part of an exploit chain for a high-severity attack. For example, if JavaScript writes data from a source into document.cookie without sanitizing it first, an attacker can manipulate the value of a single cookie to inject arbitrary values.</p>
+
+  <b>Resources:</b>
+  <div>
+    <ul>
+      <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes" target="_blank">OWASP Testing for Cookies Attributes</a></li>
+      <li><a href="https://portswigger.net/web-security/dom-based/cookie-manipulation" target="_blank">PortSwigger DOM based cookie manipulation</a></li>
+          <li><a href="https://cwe.mitre.org/data/definitions/565.html" target="_blank">CWE-565: Reliance on Cookies without Validation and Integrity Checking</a></li>
+    </ul>
+  </div>
+
+  <div *ngIf="cookies">
+    <div class="card">
+      <i class="fa fa-user-o fa-2x text-lightblue" aria-hidden="true"></i>
+      <!-- <div class="card_inner"> -->
+        <p class="text-primary-p">Welcome back {{ cookies['userName'] }}</p>
+        <!-- <span class="font-bold text-title">578</span> -->
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeIdString" class="nav-tabs">
+    <li [ngbNavItem]="'tab1'">
+      <a ngbNavLink>Sinks</a>
+      <ng-template ngbNavContent>
+        <pre>
+  vulnerability cookie-manipulation: &lt;dom::Document>.cookie [~sanitized]
+        </pre>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="'tab2'">
+      <a ngbNavLink>URL Sources</a>
+      <ng-template ngbNavContent>
+        <div class="sink">
+          <p>One possible attack vector is when a site loads a url query param into a cookie such as a username.</p>
+          <button (click)="loadHash()">Click here to load the URL query param 'userName' into a cookie named userName sink.</button>
+        </div>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="'tab3'">
+      <a ngbNavLink>Window/Document Sources</a>
+      <ng-template ngbNavContent>
+        <div class="sink">
+          <h5>Text Input:</h5>
+          <form (submit)="loadInput(dangerousCookieInput.value)">
+            <input type="text" #dangerousCookieInput>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </ng-template>
+    </li>
+
+    <!-- <li [ngbNavItem]="'tab4'">
+        <a ngbNavLink>Communication Sources</a>
+        <ng-template ngbNavContent>
+          <div class="sink">
+            <button (click)="checkForCookie()">Click here to load cookie named 'username' into a  sink.</button>
+          </div>
+        </ng-template>
+      </li> -->
+
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

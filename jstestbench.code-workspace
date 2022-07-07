@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "[javascript-database source archive]",
+			"uri": "codeql-zip-archive://0-179/Users/ishmael.serrano/Library/Application Support/Code/User/workspaceStorage/2f61b21dfa963607dcbf2c26fddc88fa/GitHub.vscode-codeql/javascript-database/javascript-database/src.zip"
+		},
+		{
+			"path": "../../../.codeql/packages"
+		}
+	],
+	"settings": {}
+}

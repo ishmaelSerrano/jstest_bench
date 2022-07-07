@@ -1,0 +1,18 @@
+<h2>Sources</h2>
+These vulnerabilities source the payload from a component of the address bar, usually the fragment, and use javascript sinks to trigger DOM based XSS.
+
+<h5>Url Based Sources</h5>
+<div *ngFor="let source of urlSources;">
+  <a [routerLink]="source.path" routerLinkActive="active">{{source.title}}</a>
+</div>
+
+<h5>Window / Document Sources</h5>
+<div *ngFor="let source of windowDocumentSources;">
+  <a [routerLink]="source.path" routerLinkActive="active">{{source.title}}</a>
+</div>
+
+<h5>Communication Sources</h5>
+<div *ngFor="let source of communicationSources;">
+  <a [routerLink]="source.path" routerLinkActive="active">{{source.title}}</a>
+</div>
+

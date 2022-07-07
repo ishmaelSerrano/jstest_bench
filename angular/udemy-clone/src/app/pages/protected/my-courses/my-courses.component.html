@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="courses-list">
+    <h4>My Courses</h4>
+    <div class="suggested-courses">
+      <app-course-card *ngFor="let course of myCourses$ | async" [course]="course"></app-course-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "vue/*",
+    "angular/*",
+    "browser-test-bench/**",
+    "backend/**"
+  ],
+  "version": "0.0.0"
+
+}

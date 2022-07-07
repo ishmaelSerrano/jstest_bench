@@ -1,0 +1,17 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "vue2": "cd ./vue/vue2 && npm run serve",
+    "vue2:build": "cd ./vue/vue2 && npm run build",
+    "angular8": "cd ./angular/angular8 && ng serve",
+    "angular8:build": "cd ./angular/angular8 && npm run build",
+    "angular8:test": "cd ./angular/angular8 && npm run ng test",
+    "browser-test-bench": "cd ./browser-test-bench && npm start",
+    "browser-test-bench:build": "cd ./browser-test-bench && npm run build"
+  }
+}

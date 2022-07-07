@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="courses-list">
+    <h4>{{heading}}</h4>
+    <a href="#">{{link}}</a>
+    <div class="suggested-courses">
+      <app-course-card *ngFor="let course of courses" [course]="course"></app-course-card>
+    </div>
+  </div>
+</div>

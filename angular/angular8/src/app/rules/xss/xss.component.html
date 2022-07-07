@@ -1,0 +1,193 @@
+<div class="main__container">
+  <div class="main__title">
+    <img src="assets/hello.svg" alt="">
+    <div class="main__greeting">
+      <h1>DOM Based XSS course</h1>
+      <p>Learn different sinks and sources that may result to DOM XSS</p>
+    </div>
+  </div>
+  <br>
+  <b>About the course:</b>
+
+  <p>
+    Welcome to this course on DOM based Cross-Site Scripting (XSS)! In this course, we explore one of the biggest risks
+    facing web applications today.
+  </p>
+  <p>
+    DOM-based XSS, also known as Type-0 XSS, is an XSS attack in which the attack payload is executed by altering the
+    DOM
+    in the victim’s browser. This causes the client to run code, without the user’s knowledge or consent. The page
+    itself
+    (i.e. the HTTP response) will not change, but a malicious change in the DOM environment will cause the client code
+    contained in the page to execute in a different way.
+  </p>
+
+  <br>
+  <b>Resources:</b>
+  <div>
+    <ul>
+      <li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS" target="_blank">OWASP DOM Based XSS</a></li>
+      <li><a href="https://portswigger.net/web-security/cross-site-scripting/dom-based" target="_blank">PortSwigger DOM
+          Based XSS</a></li>
+      <li><a href="https://cwe.mitre.org/data/definitions/79.html" target="_blank">CWE-79: Improper Neutralization of
+          Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    </ul>
+  </div>
+
+  <br>
+
+  <b>Sinks:</b>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeIdString" class="nav-tabs">
+    <li [ngbNavItem]="'tab1'">
+      <a ngbNavLink>Document</a>
+      <ng-template ngbNavContent>
+        <div class="main__container">
+
+          <div class="main__cards">
+            <div class="card">
+              <i class="fa fa-user-o fa-2x text-lightblue" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Number of Subscribers</p>
+                <span class="font-bold text-title">578</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Times of Watching</p>
+                <span class="font-bold text-title">2467</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <i class="fa fa-video-camera fa-2x text-yellow" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Number of Videos</p>
+                <span class="font-bold text-title">340</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <i class="fa fa-thumbs-up fa-2x text-green" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Number of Likes</p>
+                <span class="font-bold text-title">645</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Default horizontal form -->
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="id">Search subscriber</label>
+              <input type="text" class="form-control" aria-describedby="idHelp"
+                     placeholder="Enter name" #subscriberNameInput>
+              <small class="form-text text-muted">Enter subscriber's name</small>
+
+
+            </div>
+          </form>
+          <button class="btn btn-primary" (click)="searchForSubscriber()">Search</button>
+
+          <div id="searchQuery" class="hidden">Search query:</div>
+          <!-- Default horizontal form -->
+
+
+        </div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="'tab2'">
+      <a ngbNavLink>HTMLElement</a>
+      <ng-template ngbNavContent>
+        <div class="main__container">
+
+          <div class="charts">
+            <div class="charts__left">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="income">Calculate your taxes:</label>
+                  <input type="text" name="income" class="form-control" id="income" aria-describedby="idHelp"
+                         placeholder="Enter income" #incomeInput>
+                  <small class="form-text text-muted">Enter your income</small>
+
+
+                </div>
+              </form>
+              <button class="btn btn-primary" (click)="calculateIncomeAndTaxes()">Calculate</button>
+              <div id="incomeValue" class="hidden">Your income:</div>
+            </div>
+
+            <div class="charts__right">
+              <div class="charts__right__title">
+                <div>
+                  <h1>Income and Txes Reports</h1>
+                </div>
+                <i class="fa fa-usd" aria-hidden="true"></i>
+              </div>
+
+              <div class="charts__right__cards">
+                <div class="card1">
+                  <h1>Income</h1>
+                  <p #incomeValueOutput [innerHTML]="getIncome()"></p>
+                </div>
+
+                <div class="card2">
+                  <h1>Taxes</h1>
+                  <p #taxesValueOutput [innerHTML]="getTaxes()">$124,200</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="'tab3'">
+      <a ngbNavLink>ScriptElement</a>
+      <ng-template ngbNavContent>
+        <p>This is Email Setting</p>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="'tab4'">
+      <a ngbNavLink>Disabled</a>
+      <ng-template ngbNavContent>
+        <p>This is disabled.</p>
+        <div>
+          <label for="username">Search for name: </label>
+          <input id="username" [value]="username" placeholder="Name">
+          <button (click)="searchForName()">Search </button>
+
+          <span id="searchQuery"></span>
+
+          <a class="btn" [href]="theoreticallySafeUrl">Click</a>
+
+          <h3>DOM XSS, CWE-79, SEC-2161</h3>
+          <h4>Sinks:</h4>
+          <div class="sink">
+            <h5>Text Input:</h5>
+            <form (submit)="loadInput(unsanitizedInput.value)">
+              <textarea #unsanitizedInput></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+
+          <div class="sink">
+            <h5>URL Hash:</h5>
+            <button (click)="loadHash()">Submit URL hash for XSS</button>
+          </div>
+
+          <select name="dom-xss">
+            <option value="1">English</option>
+            <option value="2">{{ hashValue }}</option>
+          </select>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

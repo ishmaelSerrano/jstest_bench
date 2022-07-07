@@ -1,0 +1,14 @@
+
+<h3>{{ rule.name }}</h3>
+<b>About {{ rule.name }}</b>
+
+<p>{{ rule.description }}</p>
+
+<b>Resources:</b>
+<div>
+  <ul>
+    <li><a href="{{ rule.OWASP_Link }}" target="_blank">{{ rule.OWASP_Title }}</a></li>
+    <li><a href="{{ rule.PortSwigger_Link }}" target="_blank">PortSwigger{{ rule.PortSwigger_Title }}</a></li>
+    <li><a href="{{ rule.CWE_Link }}" target="_blank">{{ rule.CWE_Title }}</a></li>
+  </ul>
+</div>

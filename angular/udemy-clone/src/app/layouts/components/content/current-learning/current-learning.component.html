@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="current-learning">
+    <div class='current-learning-header'>
+      <h4>Let's start learning, {{ user.name.split(" ")[0] }}</h4>
+      <a href='#'>My learning</a>
+    </div>
+    <div class='current-learning-cards'>
+      <app-current-learning-card *ngFor="let currentLearning of currentLearning$ | async" [currentLearning]="currentLearning"></app-current-learning-card>
+    </div>
+  </div>
+</div>

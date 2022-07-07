@@ -1,0 +1,55 @@
+
+<h3></h3>
+<b>About </b>
+
+<p></p>
+
+<b>Resources:</b>
+<div>
+  <ul>
+    <li><a href="" target="_blank">OWASP </a></li>
+    <li><a href="" target="_blank">PortSwigger</a></li>
+        <li><a href="" target="_blank">CWE</a></li>
+        <li><a href="" target="_blank">CWE</a></li>
+  </ul>
+</div>
+
+<ngb-tabset [destroyOnHide]="false">
+
+  <ngb-tab title="Sinks">
+    <ng-template ngbTabContent>
+      <pre>
+
+      </pre>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="URL Sources">
+    <ng-template ngbTabContent>
+      <div class="sink">
+        <button (click)="loadHash()">Click here to load the URL hash into a {} sink.</button>
+      </div>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="Window/Document Sources">
+    <ng-template ngbTabContent>
+      <div class="sink">
+        <h5>Text Input:</h5>
+        <form (submit)="loadInput(dangerousCookieInput.value)">
+          <input type="text" #dangerousCookieInput>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="Communication Sources">
+    <ng-template ngbTabContent>
+      <div class="sink">
+        <button (click)="checkForCookie()">Click here to load cookie named 'username' into a {} sink.</button>
+      </div>
+    </ng-template>
+  </ngb-tab>
+
+</ngb-tabset>

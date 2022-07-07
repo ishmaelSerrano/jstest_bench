@@ -1,0 +1,83 @@
+<!--<div class="course-details-hero">
+  <div class="container">
+    <h3 #shareEmailDiv id="shareEmail"></h3>
+  </div>
+</div>-->
+<ng-template [ngIf]="course">
+  <div class="course-details-hero" [style.background-image]="'url(assets/img/'+ course.img +')'">
+    <div class="container">
+      <div class="wrapper">
+        <div class="course-details-header">
+          <h4>{{course.title}}</h4>
+          <span>{{course.courseAuthor}}</span>
+        </div>
+       <!-- <div class="course-details-card">
+          <img src="assets/img/{{course.img}}" alt="{{course.title}}"/>
+          <div class="course-price">{{course.coursePrice}}</div>
+          <div class="course-actions">
+            <button class="btn-accent">Add to cart</button>
+            <button class="btn-outline">Buy now</button>
+            <div class="full-width" id="shareForm">
+              <input type="text" name="email" placeholder="email" [(ngModel)]="shareEmail">
+              <button (click)="handleShareClick(shareEmail)" class="btn-outline">Share</button>
+            </div>
+            <div class="course-includes">
+              <div class="course-includes&#45;&#45;heading">
+                This course includes:
+              </div>
+              <p>34.5 hours on-demand video</p>
+              <p>43 articles</p>
+              <p>151 downloadable resources</p>
+              <p>Full lifetime access</p>
+              <p>Access on mobile and TV</p>
+              <p>Assignments</p>
+              <p>Certificate of completion</p>
+            </div>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="course-content">
+      <div class="course-summary--heading">About {{course.title}}</div>
+      <div class="course-summary">
+        <p class="course-description" [innerHTML]="course.description">
+        </p>
+      </div>
+      <div class="course-summary--heading">Literature</div>
+      <div class="course-summary">
+        <ul class="course-list">
+          <li class="course-list-item" *ngFor="let literature of course.literature">
+            <a href="{{literature.href}}" target="_blank">{{literature.title}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="course-summary--heading">Sinks</div>
+      <div class="course-summary">
+        <ul class="course-list">
+          <li class="course-list-item">Some sink 1</li>
+          <li class="course-list-item">Some sink 2</li>
+          <li class="course-list-item">Some sink 3</li>
+        </ul>
+      </div>
+      <div class="course-reviews">
+        <h4>Reviews</h4>
+        <div class="user-review">
+          <form #userReview="ngForm" (ngSubmit)="submitReview(userReview.form.value)">
+            <label for="user-review">Write your own review:</label>
+            <textarea id="user-review" name="user-review" ngModel></textarea>
+            <button class="btn-accent">Submit</button>
+          </form>
+        </div>
+        <app-reviews-list></app-reviews-list>
+      </div>
+    </div>
+    <div class="course-playground" [ngSwitch]="course.id">
+      <app-manipulating-page-data-with-cookies *ngSwitchCase="10"></app-manipulating-page-data-with-cookies>
+      <div *ngSwitchDefault>
+        No playground found for this course!s
+      </div>
+    </div>
+  </div>
+</ng-template>

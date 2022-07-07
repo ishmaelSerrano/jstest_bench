@@ -1,0 +1,16 @@
+<div class="review-container">
+  <div class="reviewer-avatar">
+    <img src="assets/img/default-avatar.jpg" alt="{{review.author}}"/>
+  </div>
+  <div class="review-content">
+    <div class="review-author">
+      {{review.author}}
+    </div>
+    <div class="review-rating">
+      <span *ngFor="let star of rating">{{star === 'filled'? '★' : '☆'}}</span>
+    </div>
+    <div class="review-comment">
+      {{review.comment}}
+    </div>
+  </div>
+</div>

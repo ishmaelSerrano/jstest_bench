@@ -1,0 +1,42 @@
+<div class="top-bar">
+  <div class="logo">
+    <a href='/' >
+      <img src="assets/img/udemy-2-logo.png" alt='logo' />
+    </a>
+  </div>
+      <span>
+        <a href='#'>Categories</a>
+      </span>
+  <span class='search'>
+        <app-search-bar></app-search-bar>
+      </span>
+  <span class='top-links'>
+        <a href='#'>Udemy for Business</a>
+      </span>
+  <span class='top-links'>
+        <a href='#'>Teach on Udemy</a>
+      </span>
+  <span class='top-links'>
+        <a href='#'>My learning</a>
+      </span>
+  <span class='bar-icon'>
+        <a href='#'>
+          <i class='far fa-heart'></i>
+        </a>
+      </span>
+  <span class='bar-icon'>
+        <a href='#'>
+          <i class='fas fa-shopping-cart'></i>
+        </a>
+      </span>
+  <span class='bar-icon'>
+        <a href='#'>
+          <i class='far fa-bell'></i>
+        </a>
+      </span>
+  <span [ngClass]="user?.name ? 'bar-icon profile' : 'top-links'">
+    <a href="{{ user?.name ? 'my-courses' : 'login' }}">{{ user?.name ? this.getShortName(user.name) : 'Login' }}</a>
+    <span *ngIf="user?.name" class='logout-dropdown' (click)="this.authService.logout()">Logout</span>
+  </span>
+</div>
+

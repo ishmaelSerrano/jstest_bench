@@ -1,0 +1,45 @@
+.current-learning{
+  width: 95%;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.current-learning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: #0f7c90;
+    font-size: 1rem;
+    font-weight: 700;
+
+    &:hover {
+      color: #004450;
+    }
+  }
+}
+
+.current-learning-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+@media (max-width: 1150px) {
+  .current-learning{
+    width: 100%;
+  }
+  .current-learning-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 840px) {
+  .current-learning{
+    width: 100%;
+  }
+  .current-learning-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

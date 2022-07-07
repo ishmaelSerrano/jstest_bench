@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ../../backend
+    platform: linux/amd64
+    restart: always
+    ports:
+      - "127.0.0.1:3001:3001"
+  frontend:
+    build:
+      context: .
+    platform: linux/amd64
+    restart: always
+    ports:
+      - "4200:4200"

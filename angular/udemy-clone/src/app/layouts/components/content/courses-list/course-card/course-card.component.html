@@ -1,0 +1,32 @@
+<div class="course-card" (click)="onClickCard()">
+  <div class='course-container'>
+    <div class='img-container'>
+      <img src="assets/img/{{course.img}}" alt="{{course.title}}" />
+    </div>
+    <div class='course-content'>
+      <h5>{{course.title}}</h5>
+      <p>{{course.courseAuthor}}</p>
+      <div class='rating-details'>
+        <p>
+          {{course.courseRating}}
+          <span class='stars'>
+                <i class='fas fa-star'></i>
+                <i class='fas fa-star'></i>
+                <i class='fas fa-star'></i>
+                <i class='fas fa-star'></i>
+                <i class='fas fa-star-half-alt'></i>
+              </span>
+          <span class='ratNum'>({{course.courseRating}})</span>
+        </p>
+      </div>
+
+      <h5>
+        {{course.currentPrice}}
+        <span>
+              <span>{{course.coursePrice}}</span>
+            </span>
+      </h5>
+      <div *ngIf="course.tag" class='tag' [style.background]="course.tagColor">{{course.tag}}</div>
+    </div>
+  </div>
+</div>

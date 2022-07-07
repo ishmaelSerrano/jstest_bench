@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+
+  @media (max-width: 1650px) {
+    font-size: 48%;
+  }
+}
+
+input, textarea {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 3.6rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5,h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+p,input, a, li, span {
+  font-size: 0.85rem;
+}
+
+a {
+  text-decoration: none;
+  padding-bottom: 1rem;
+  color: #666;
+
+  &:hover {
+    color: #0f7c90;
+  }
+}
+
+footer {
+  margin: 3rem 0rem .5rem 0rem;
+}
+
+.container{
+  width:70%;
+  margin: 0 auto;
+}
+.content-bar{
+  border-top: 1px solid #ddd;
+  padding: 1rem 3rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link{
+  background: #0f7c90;
+  padding: 1rem 0.8rem;
+  border-radius: 0.3rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  &:hover {
+    background: #004450;
+    color: #fff;
+  }
+}
+
+.btn-accent{
+  color: #fff;
+  background-color: #a435f0;
+}
+
+.btn-outline{
+  text-decoration: none;
+  color: #666;
+  border: 1px solid #333;
+  padding: 0.2rem 1.5rem;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media (max-width: 1300px) {
+  .content-bar{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .container{
+    width: 90%;
+  }
+}
